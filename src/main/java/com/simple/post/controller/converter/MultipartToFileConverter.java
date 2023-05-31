@@ -1,4 +1,4 @@
-package com.simple.post.application;
+package com.simple.post.controller.converter;
 
 import com.simple.post.controller.FileConverter;
 import org.springframework.stereotype.Component;
