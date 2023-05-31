@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>비밀번호 입력</title>
+</head>
+<body>
+<h3>비밀번호 입력</h3>
+<form id="password-form" th:action="@{/{postId}(postId=${param.postId})}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="postId" th:value="${param.postId}">
+    <label for="password-input">비밀번호:</label>
+    <input type="password" id="password-input" name="password">
+    <button type="submit">확인</button>
+</form>
+</body>
+</html>

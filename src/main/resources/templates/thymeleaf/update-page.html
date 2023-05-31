@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+    <link th:href="@{/css/create-page.css}" type="text/css" rel="stylesheet"/>
+    <title>게시물 수정</title>
+</head>
+<body>
+<div class="container">
+    <form id="postForm" th:action="@{/update/{postId}(postId=${param.postId})}" method="POST" enctype="multipart/form-data">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="company-select" class="form-label">회사:</label>
+                <input type="text" id="company-select" name="company" th:value="${post.company}" readonly class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="registrant-input" class="form-label">등록자:</label>
+                <input type="text" id="registrant-input" name="registrant" th:value="${post.registrant}" readonly class="form-control">
+            </div>
+            <div class="col">
+                <label for="registration-date" class="form-label">등록일자:</label>
+                <input type="text" id="registration-date" name="registrationDate"
+                       th:value="${post.registrationDate}" readonly class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="password-input" class="form-label">비밀번호:</label>
+                <input type="password" id="password-input" name="password" required class="form-control">
+            </div>
+            <div class="col">
+                <label for="file-input" class="form-label">첨부파일:</label>
+                <input type="file" id="file-input" name="multipartFile" class="form-control">
+                <span th:if="${post.fileName}">
+                    <span th:text="${post.fileName}"></span>
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="title-input" class="form-label">제목:</label>
+                <input type="text" id="title-input" name="title" th:value="${post.title}" required class="form-control">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="content-input" class="form-label">내용:</label>
+                <textarea id="content-input" name="content" th:value="${post.content}" required class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="input"></div>
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary">수정</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
