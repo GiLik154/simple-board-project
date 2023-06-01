@@ -73,7 +73,10 @@ class PageControllerDeleteTest {
 
     @Test
     void Post_게시물_삭제_정상작동() throws Exception {
-        Post newPost = new Post("deleteControlTestTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "deleteControlTestTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "/files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -92,7 +95,10 @@ class PageControllerDeleteTest {
 
     @Test
     void Post_게시물_생성_정상작동_ID_다름() throws Exception {
-        Post newPost = new Post("deleteControlTestTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "deleteControlTestTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -112,7 +118,10 @@ class PageControllerDeleteTest {
 
     @Test
     void Post_게시물_생성_정상작동_비밀번호_다름() throws Exception {
-        Post newPost = new Post("deleteControlTestTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "deleteControlTestTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 

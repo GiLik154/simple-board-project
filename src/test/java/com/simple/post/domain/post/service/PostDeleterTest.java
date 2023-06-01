@@ -39,7 +39,10 @@ class PostDeleterTest {
 
     @Test
     void 게시물_삭제_정상작동() throws IOException {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -50,8 +53,11 @@ class PostDeleterTest {
     }
 
     @Test
-    void 게시물_삭제_Id_다름() throws IOException {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+    void 게시물_삭제_Id_다름() {
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
         Long wrongId = newPost.getId() + 100000000L;

@@ -78,7 +78,10 @@ class PostUpdaterTest {
     @Test
     void 게시물_업데이트_정상작동_파일_없음() throws IOException {
         File file = null;
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 

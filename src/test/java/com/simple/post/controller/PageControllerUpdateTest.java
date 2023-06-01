@@ -101,7 +101,9 @@ class PageControllerUpdateTest {
 
     @Test
     void Get_게시물_업데이트_정상작동() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", "testPassword", LocalDate.now());
+        Post newPost = new Post("testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         postRepository.save(newPost);
 
         MockHttpServletRequestBuilder builder = get("/update")
@@ -114,7 +116,9 @@ class PageControllerUpdateTest {
 
     @Test
     void Post_게시물_업데이트_정상작동_원래파일_없음_새로운파일_없음() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post("testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         postRepository.save(newPost);
 
         given(fileConverter.convert(any(MultipartFile.class))).willReturn(new File("test.jpg"));
@@ -147,7 +151,9 @@ class PageControllerUpdateTest {
 
     @Test
     void Post_게시물_업데이트_정상작동_파일_없음() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post("testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "/files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -181,7 +187,9 @@ class PageControllerUpdateTest {
 
     @Test
     void Post_게시물_생성_정상작동_파일_있음() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post("testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "/files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -215,7 +223,10 @@ class PageControllerUpdateTest {
 
     @Test
     void Post_게시물_생성_정상작동_ID_다름() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 
@@ -246,7 +257,10 @@ class PageControllerUpdateTest {
 
     @Test
     void Post_게시물_생성_정상작동_비밀번호_다름() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", bCryptPasswordEncoder.encode("testPassword"), LocalDate.now()
+        );
         newPost.uploadFile("test.jpg", "files/testCompany/test.jpg");
         postRepository.save(newPost);
 

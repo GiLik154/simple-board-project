@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -43,7 +42,9 @@ class PageControllerListTest {
 
     @Test
     void 리스트_출력_정상작동() throws Exception {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", "testPassword", LocalDate.now());
+        Post newPost = new Post("testTitle", "testContent", "testCompany",
+                "testResistant", "testPassword", LocalDate.now()
+        );
         postRepository.save(newPost);
 
         MockHttpServletRequestBuilder builder = get("/")

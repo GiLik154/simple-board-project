@@ -44,7 +44,10 @@ class PostCreatorTest {
 
         given(fileUploader.upload(anyString(), any(File.class))).willReturn("fileSaved");
 
-        PostCreatorCommand postCreatorCommand = new PostCreatorCommand("testServiceTitle", "testContent", "testCompany", "testResistant", "testPassword", LocalDate.now());
+        PostCreatorCommand postCreatorCommand = new PostCreatorCommand(
+                "testServiceTitle", "testContent", "testCompany",
+                "testResistant", "testPassword", LocalDate.now()
+        );
         postCreator.create(postCreatorCommand, file);
 
         List<Post> posts = postRepository.findAllByTitle("testServiceTitle");

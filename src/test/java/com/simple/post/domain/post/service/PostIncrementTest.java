@@ -27,7 +27,10 @@ class PostIncrementTest {
 
     @Test
     void 게시물_조회카운트_정상작동() {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", "testPassword", LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", "testPassword", LocalDate.now()
+        );
         Post increasePost = postRepository.save(newPost);
 
         postIncrement.increase(newPost.getId());
@@ -38,7 +41,10 @@ class PostIncrementTest {
 
     @Test
     void 게시물_조회카운트_반복조회() {
-        Post newPost = new Post("testTitle", "testContent", "testCompany", "testResistant", "testPassword", LocalDate.now());
+        Post newPost = new Post(
+                "testTitle", "testContent", "testCompany",
+                "testResistant", "testPassword", LocalDate.now()
+        );
         Post increasePost = postRepository.save(newPost);
 
         postIncrement.increase(newPost.getId());
