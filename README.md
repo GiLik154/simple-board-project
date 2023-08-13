@@ -5,7 +5,8 @@
 과제로 Post를 만드는과제가 있었다.
 파일 업로드를 해야 하고, 이것을 테스트 하는 코드를 작성하였다.
 
-![스크린샷 2023-05-31 오전 11 07 07](https://github.com/GiLik154/simple-board-project/assets/118507239/b8401a94-32ca-4073-ab6e-e2473993ad6c)
+![242609210-b8401a94-32ca-4073-ab6e-e2473993ad6c](https://github.com/GiLik154/simple-board-project/assets/118507239/9b8fb64c-c244-4537-99cb-fd1b58bd7640)
+
 
 위와 같은 테스트 코드를 작성했다.
 `file.createNewFile();` 을 해야 했던 이유는, 파일이 없으면 NPE 가 발생했기 때문이다.
@@ -18,7 +19,8 @@
 
 동생에게 다시 물어봤고, `@MockBean`을 사용하라는 말을 들었다.
 
-![스크린샷 2023-05-31 오전 11 04 06](https://github.com/GiLik154/simple-board-project/assets/118507239/1d94d4fe-dd95-47ca-8325-f99f8cb0e12c)
+![242609237-1d94d4fe-dd95-47ca-8325-f99f8cb0e12c](https://github.com/GiLik154/simple-board-project/assets/118507239/14f9037c-1945-47a6-9b48-698bf451414b)
+
 
 (파일이 실제로 생성되기 때문에 `@AfterEach`로 파일을 매번 삭제해줘야 했다.)
 (테스트코드도 매우 길어졌다.)
@@ -33,7 +35,8 @@ Mock의 기본 객체는 빈 객체로 생성이 되고, 여기에 우리가 해
 
 사실 `given()` `when()` 두 가지 차이를 찾아보려 했지만 정보를 찾는게 쉽지 않았다.
 
-![스크린샷 2023-05-31 오전 11 43 23](https://github.com/GiLik154/simple-board-project/assets/118507239/abf8b8ae-5054-4be2-953a-8be99e5b87f2)
+![242609273-abf8b8ae-5054-4be2-953a-8be99e5b87f2](https://github.com/GiLik154/simple-board-project/assets/118507239/2c123cee-f6a3-4979-845e-e6a7a9522e6d)
+
 
 내가 이해한 건 지 잘 모르겠지만, 처음에는 when()으로만 메소드 호출에 대한 동작을 정의했던 것 같다. 이것은 givne/when/then 의 주석을 사용하는 BDD의 스타일에 어울리지 않기 때문에 given() 메서드를 새로 도입하였다는 이야기인 것 같다.
 
@@ -46,24 +49,24 @@ Mock의 기본 객체는 빈 객체로 생성이 되고, 여기에 우리가 해
 주된 사용방법은
 given(메소드(매개변수)).리턴값(); 과 같은 형식으로 이루어진다.
 
-![스크린샷 2023-05-31 오전 11 50 37](https://github.com/GiLik154/simple-board-project/assets/118507239/4cbde0dc-4a94-4ebd-8c4a-e11a173af441)
+![242609299-4cbde0dc-4a94-4ebd-8c4a-e11a173af441](https://github.com/GiLik154/simple-board-project/assets/118507239/a9ec510c-f347-446a-8760-318ad3bfcaa7)
+
 
 나의  FileUploader는 String으로 회사명과 File을 지급받는다.
 그리고 Return으로는 저장된 파일의 Path가 반환된다.
 
-![스크린샷 2023-05-31 오후 12 09 02](https://github.com/GiLik154/simple-board-project/assets/118507239/12e3d701-ce91-4abd-9cbd-5ee61d5b8ca2)
+![242609328-12e3d701-ce91-4abd-9cbd-5ee61d5b8ca2](https://github.com/GiLik154/simple-board-project/assets/118507239/b6372ca3-71b8-47a4-8e52-04af3a469803)
 
-![스크린샷 2023-05-31 오전 11 47 04](https://github.com/GiLik154/simple-board-project/assets/118507239/abc59f32-d311-4efe-930e-95f4c91f1f63)
-
+![242609366-abc59f32-d311-4efe-930e-95f4c91f1f63](https://github.com/GiLik154/simple-board-project/assets/118507239/bd27027c-2305-4aec-8b94-79318ba9af1a)
 
 이걸 Mocking 하면 위와 같이 작성할 수 있다.
 FileUploader.upload에 어떤 스트링이나 어떤 파일이 들어오면, fileSaved를 반환한다.
 
-![Untitled (1)](https://github.com/GiLik154/simple-board-project/assets/118507239/4e5d95aa-7858-44d4-8b7b-bdb800b1b08d)
+![242609387-4e5d95aa-7858-44d4-8b7b-bdb800b1b08d](https://github.com/GiLik154/simple-board-project/assets/118507239/c22350b0-f15c-45c3-b0d3-9b5b7c686bd4)
 
 전체 코드는 아래와 같고
 
-![스크린샷 2023-05-31 오후 12 12 01](https://github.com/GiLik154/simple-board-project/assets/118507239/dfdb2241-7e26-43a4-80ba-d68366b5a87a)
+![242609415-dfdb2241-7e26-43a4-80ba-d68366b5a87a](https://github.com/GiLik154/simple-board-project/assets/118507239/fdb43d09-feb0-4b3e-89d6-e74d2d94332a)
 
 테스트 통과도 아주 잘 된다.
 위에서 작성했던 파일을 삭제하는 로직과 파일이 몇 개 저장되었는지 확인하던 `assert`는 삭제되었다.
